@@ -14,9 +14,3 @@ plotly>=5.18.0
 
 # Data validation
 pydantic>=2.5.0
-
-# Development (optional)
-pytest>=7.4.0
-pytest-cov>=4.1.0
-black>=23.0.0
-ruff>=0.1.0
