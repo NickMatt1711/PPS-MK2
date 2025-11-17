@@ -3,8 +3,6 @@ Polymer Production Scheduler V2 - Modular Version
 Main Streamlit application - orchestrates UI and solver.
 """
 
-import streamlit as st
-from ortools.sat.python import cp_model
 import sys
 from pathlib import Path
 
@@ -13,9 +11,12 @@ src_path = Path(__file__).parent / "src"
 if str(src_path) not in sys.path:
     sys.path.insert(0, str(src_path))
 
+import streamlit as st
+from ortools.sat.python import cp_model
+
 # Import our modular components
-from src.ui.styles import apply_custom_styles, create_header, create_info_box
-from src.ui.components import (
+from ui.styles import apply_custom_styles, create_header, create_info_box
+from ui.components import (
     render_file_uploader,
     render_template_download,
     render_optimization_params,
@@ -25,15 +26,15 @@ from src.ui.components import (
     render_inventory_stats,
     render_welcome_screen
 )
-from src.ui.visualizations import (
+from ui.visualizations import (
     get_grade_colors,
     create_gantt_chart,
     create_inventory_chart,
     create_schedule_table,
     create_production_summary
 )
-from src.data.loaders import ExcelDataLoader, DataValidator
-from src.core.solver import ProductionScheduler
+from data.loaders import ExcelDataLoader, DataValidator
+from core.solver import ProductionScheduler
 
 # ============================================================================
 # PAGE CONFIGURATION
@@ -337,4 +338,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
