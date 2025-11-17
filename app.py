@@ -692,7 +692,8 @@ class ProductionScheduler:
                     deficit = self.model.NewIntVar(0, min_inv, f'deficit_{grade}_{d}')
                     self.model.Add(deficit >= min_inv - self.inventory_vars[(grade, d)])
                     self.model.Add(deficit >= 0)
-                    objective += self.stockout_penalty * deficit // 2  # Lower penalty than stockout
+                    penalty_weight = max(1, self.stockout_penalty // 2)  # ✅ Divide the constant first
+                    objective += penalty_weight * deficit
         
         # SOFT: Penalty for not meeting min closing inventory
         for grade in self.grades:
@@ -1344,3 +1345,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
