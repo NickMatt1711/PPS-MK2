@@ -154,7 +154,7 @@ def render_progress_tracker(progress: int, message: str):
     progress_bar = st.progress(progress)
     status_text = st.empty()
     
-    from .styles import create_info_box
+    from ui.styles import create_info_box
     status_text.markdown(f'<div class="info-box">{message}</div>', 
                         unsafe_allow_html=True)
     
@@ -174,7 +174,7 @@ def render_results_metrics(objective: float,
         stockout: Total stockout
         solve_time: Solver time in seconds
     """
-    from .styles import create_metric_card
+    from ui.styles import create_metric_card
     
     col1, col2, col3, col4 = st.columns(4)
     
@@ -230,7 +230,7 @@ def render_welcome_screen():
     col1, col2 = st.columns([2, 1])
     
     with col1:
-        from .styles import create_info_box
+        from ui.styles import create_info_box
         create_info_box(
             "<h3>👈 Get Started</h3>"
             "<p>Upload an Excel file to begin optimization, or download the sample template.</p>",
