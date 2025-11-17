@@ -5,6 +5,13 @@ Main Streamlit application - orchestrates UI and solver.
 
 import streamlit as st
 from ortools.sat.python import cp_model
+import sys
+from pathlib import Path
+
+# Add src directory to Python path
+src_path = Path(__file__).parent / "src"
+if str(src_path) not in sys.path:
+    sys.path.insert(0, str(src_path))
 
 # Import our modular components
 from src.ui.styles import apply_custom_styles, create_header, create_info_box
@@ -330,3 +337,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
